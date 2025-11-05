@@ -1,6 +1,8 @@
-import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function TaskTable({ tasks, markDone, deleteTask }) {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full max-w-3xl bg-white p-6 rounded-xl shadow-md">
       <h2 className="text-2xl font-semibold mb-4 text-gray-700">All Tasks</h2>
@@ -38,6 +40,13 @@ function TaskTable({ tasks, markDone, deleteTask }) {
                       Mark Done
                     </button>
                   )}
+                 <button
+  onClick={() => navigate(`/edit-task/${task.id}`)}
+  className="bg-blue-500 text-white px-2 py-1 rounded text-sm hover:bg-blue-600"
+>
+  Edit
+</button>
+
                   <button
                     onClick={() => deleteTask(task.id)}
                     className="bg-red-500 text-white px-2 py-1 rounded text-sm hover:bg-red-600"
